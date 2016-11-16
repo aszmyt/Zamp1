@@ -16,7 +16,7 @@ extern "C" {
 
 /*!
  * \brief
- *
+ *Wtyczka FLY odpowiedzialna za lot drona w trzech plaszczyznach
  *
  */
 Interp4Command* CreateCmd(void)
@@ -26,14 +26,14 @@ Interp4Command* CreateCmd(void)
 
 
 /*!
- *
+ *nastepuje ustawienie poczatkowych wartosci
  */
 Interp4Fly::Interp4Fly(): _hor_speed(0), _ver_speed(0), _dist(0)
 {}
 
 
 /*!
- *
+ *Funkcja wyswietla wartosci ustawione we wtyczce
  */
 void Interp4Fly::PrintCmd() const
 {
@@ -42,7 +42,7 @@ void Interp4Fly::PrintCmd() const
 
 
 /*!
- *
+ * Funkcja zwraca nazwe wtyczki
  */
 const char* Interp4Fly::GetCmdName() const
 {
@@ -51,7 +51,7 @@ const char* Interp4Fly::GetCmdName() const
 
 
 /*!
- *
+ * Algorytm interpretujacy dane otrzymane przez buffor do wykonania ruchu w odpowietniej plaszczyznie, w zaleznosci od ustawienia drona plaszczyzny po ktorych sie porusza zmieniaja sie.
  */
 bool Interp4Fly::ExecCmd( DronPose     *pRobPose,  Visualization *pVis) const
 {
@@ -59,7 +59,6 @@ double x,y,z,c,d;
 	d=pRobPose->GetAngle_deg(d);
 	c=sqrt(pow(_hor_speed,2)+pow(_ver_speed,2));
 	c=_dist/c;
-	//y=c*_hor_speed;
 	z=c*_ver_speed;
 	cout<<"d="<<d;
 	if((d>0 && d<90) || (d>90 && d<180) || (d>180 && d<270) || (d>270 && d<360) ) 
@@ -73,16 +72,8 @@ double x,y,z,c,d;
   
   pVis->Draw(pRobPose);
   usleep(800000);  // Pauza 0,8 sek.
-/*
-  pRobPose->SetPos_m(100,50,50);
-  pVis->Draw(pRobPose);
-  usleep(800000);  // Pauza 0,3 sek.
-
-  pRobPose->SetPos_m(50,50,50);
-  pVis->Draw(pRobPose);
-  usleep(800000);  // Pauza 0,8 sek. */
   /*
-   *  Tu trzeba napisać odpowiedni kod.
+   * 
    */
   return true;
 }

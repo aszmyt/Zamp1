@@ -113,6 +113,7 @@ int main()
 		st>>wartosc;
 			if(wtyczki._ZbWtyczek[wartosc]!=0){
 			wtyczki._ZbWtyczek[wartosc]->ReadParams(st);
+			wtyczki._ZbWtyczek[wartosc]->ExecCmd(&DPose,&PlotVis);
 			wtyczki._ZbWtyczek[wartosc]->PrintCmd();
 			}
 			else {

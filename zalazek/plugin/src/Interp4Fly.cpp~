@@ -64,8 +64,8 @@ double x,y,z,c,d;
 	cout<<"d="<<d;
 	if((d>0 && d<90) || (d>90 && d<180) || (d>180 && d<270) || (d>270 && d<360) ) 
 	{
-		y=d*_hor_speed;
-		x=d*_hor_speed;
+		y=sin(d)*_hor_speed;
+		x=sin(d)*_hor_speed;
 		pRobPose->SetPos_m(x,y,z); cout<<x<<" "<<y<<" "<<z<<" "<<endl; }
 	else if(d==0 || d==180) { x=c*_hor_speed;
 	pRobPose->SetPos_m(0,x,z);}
